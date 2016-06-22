@@ -28,11 +28,14 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, MapView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    private GoogleMap mMap;
     @Inject
     InfoMapAdapter adapter;
     @Inject
     MapPresenter presenter;
+
+    private GoogleMap mMap;
+    private static final int ZOOM_MAP=12;
+    private static final LatLng SANTANDER_COORDINATES = new LatLng(43.4722475797229, -3.8199358808);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +81,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setInfoWindowAdapter(adapter);
-        LatLng Santander = new LatLng(43.4722475797229, -3.8199358808);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Santander, 12));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SANTANDER_COORDINATES, ZOOM_MAP));
         presenter.getBikeStations();
     }
 
     @Override
-    public void showMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation> listStateBikeStation) { //deberia ir en el adaptador
+    public void showMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation> listStateBikeStation) {
         adapter.addMarkers(listBikeStation,listStateBikeStation,mMap);
     }
 
@@ -94,7 +96,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
-    public void showError(String error) {
-        Toast.makeText(this,error,Toast.LENGTH_LONG).show();
+    public void showError(int error) {
+        if(error==1){
+            Toast.makeText(this,getString(R.string.mapmain_data_error),Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this,getString(R.string.mapmain_response_error),Toast.LENGTH_LONG).show();
+        }
+
     }
 }

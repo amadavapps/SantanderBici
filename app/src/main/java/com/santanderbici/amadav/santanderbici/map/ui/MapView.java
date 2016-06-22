@@ -11,5 +11,5 @@ import java.util.ArrayList;
 public interface MapView {
     void showMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation>listStateBikeStation);
     void hideMarkers();
-    void showError(String error);
+    void showError(int error);
 }

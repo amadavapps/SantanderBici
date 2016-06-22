@@ -7,18 +7,13 @@ import com.google.gson.annotations.SerializedName;
  * Created by dgago on 14/06/2016.
  */
 public class BikeStation implements Comparable<BikeStation> {
-
-    @SerializedName("ayto:direcction")
-    @Expose
+    @SerializedName("ayto:direccion")
     private String direcction;
     @SerializedName("dc:identifier")
-    @Expose
     private int id;
-    @SerializedName("ayto:latitude")
-    @Expose
+    @SerializedName("ayto:latitud")
     private double latitude;
-    @SerializedName("ayto:longitude")
-    @Expose
+    @SerializedName("ayto:longitud")
     private double longitude;
 
     public BikeStation(int id, String direcction, double latitude, double longitude) {

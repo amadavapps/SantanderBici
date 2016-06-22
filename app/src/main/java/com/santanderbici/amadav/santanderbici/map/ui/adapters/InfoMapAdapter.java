@@ -21,7 +21,6 @@ import butterknife.ButterKnife;
  * Created by Deathroll on 15/06/2016.
  */
 public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
-    LayoutInflater inflater;
     @BindView(R.id.txtTotalBikes)
     TextView txtTotalBikes;
     @BindView(R.id.txtFreeBikes)
@@ -30,6 +29,9 @@ public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
     TextView txtFreePlaces;
     @BindView(R.id.txtDirection)
     TextView txtDirection;
+
+    private LayoutInflater inflater;
+    private ArrayList<StateBikeStation>listStateBikeStation;
 
     public InfoMapAdapter(LayoutInflater inflater) {
         this.inflater = inflater;
@@ -45,22 +47,23 @@ public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
         View v = inflater.inflate(R.layout.infomap_adapter, null);
         ButterKnife.bind(this, v);
 
-        String snippet[]=marker.getSnippet().split("\\.");
-        txtDirection.setText(marker.getTitle().toString());;
-        txtTotalBikes.setText(snippet[0]);
-        txtFreeBikes.setText(snippet[1]);
-        txtFreePlaces.setText(snippet[2]);
+        int pos=Integer.parseInt(marker.getId().substring(1,marker.getId().length()));    //marker id start in 'm'
+        int totalBikes=Integer.parseInt(listStateBikeStation.get(pos).getFreePlaces()) +
+                Integer.parseInt(listStateBikeStation.get(pos).getFreeBikes());
+
+        txtDirection.setText(marker.getTitle());
+        txtTotalBikes.setText(String.valueOf(totalBikes));
+        txtFreeBikes.setText(listStateBikeStation.get(pos).getFreeBikes());
+        txtFreePlaces.setText(listStateBikeStation.get(pos).getFreePlaces());
 
         return v;
     }
 
     public void addMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation> listStateBikeStation,GoogleMap mMap) {
             for (int i = 0; i < listBikeStation.size(); i++) {
-                int totalPlazas=Integer.parseInt(listStateBikeStation.get(i).getFreePlaces()) +  Integer.parseInt(listStateBikeStation.get(i).getFreeBikes());
                 LatLng latLng = new LatLng(listBikeStation.get(i).getLatitude(), listBikeStation.get(i).getLongitude());
-                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(listBikeStation.get(i).getDirecction()).snippet(
-                        totalPlazas+ "." + listStateBikeStation.get(i).getFreePlaces() +
-                                "." + listStateBikeStation.get(i).getFreeBikes()));
+                mMap.addMarker(new MarkerOptions().position(latLng).title(listBikeStation.get(i).getDirecction()));
             }
+            this.listStateBikeStation=listStateBikeStation;
     }
 }

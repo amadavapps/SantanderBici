@@ -8,16 +8,12 @@ import com.google.gson.annotations.SerializedName;
  */
 public class StateBikeStation implements Comparable<StateBikeStation>{
     @SerializedName("ayto:bicicletas_libres")
-    @Expose
     private String freeBikes;
     @SerializedName("ayto:puestos_libres")
-    @Expose
     private String freePlaces;
     @SerializedName("dc:modified")
-    @Expose
     private String lastUpdate;
     @SerializedName("dc:identifier")
-    @Expose
     private int id;
 
     public StateBikeStation(String freeBikes, String freePlaces, int id, String lastUpdate) {

@@ -9,7 +9,6 @@ import com.android.volley.toolbox.Volley;
  * Created by dgago on 14/06/2016.
  */
 public class GoogleVolley {
-
     private static GoogleVolley myGoogleVolley = null;
     private RequestQueue myRequestQueue;
 

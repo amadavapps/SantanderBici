@@ -14,5 +14,4 @@ import dagger.Component;
 @Singleton @Component(modules={MapModule.class, LibsModule.class})
 public interface MapComponent {
     void inject(MainActivity Activity);
-
 }

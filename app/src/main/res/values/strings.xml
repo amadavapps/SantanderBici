@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">SantanderBici</string>
     <string name="title_activity_main">Santander Bici</string>
+
+    <string name="mapmain.data.error">Datos recibidos incorrectos</string>
+    <string name="mapmain.response.error">Fallo de conexion con el servidor</string>
+
 </resources>

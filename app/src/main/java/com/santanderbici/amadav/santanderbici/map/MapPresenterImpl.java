@@ -1,6 +1,5 @@
 package com.santanderbici.amadav.santanderbici.map;
 
-import android.util.Log;
 
 import com.santanderbici.amadav.santanderbici.lib.base.EventBus;
 import com.santanderbici.amadav.santanderbici.map.events.MapEvent;
@@ -49,13 +48,14 @@ public class MapPresenterImpl implements MapPresenter {
     @Override
     @Subscribe
     public void onEventMainThread(MapEvent mapEvent) {
-        String errorMsg = mapEvent.getError();
+        int errorNumber = mapEvent.getError();
         if (view != null) {
-            if (errorMsg != null) {
-                view.showError(errorMsg);
-            }
-            if (mapEvent.getListBikeStation() != null && mapEvent.getListStateBikeStation() != null)
+            if (errorNumber != 0) {
+                view.showError(errorNumber);
+            } else {
                 view.showMarkers(mapEvent.getListBikeStation(), mapEvent.getListStateBikeStation());
+            }
+
         }
     }
 }
