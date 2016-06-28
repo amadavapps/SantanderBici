@@ -41,6 +41,7 @@ public class MapPresenterImpl implements MapPresenter {
     public void getBikeStations() {
         if (view != null) {
             view.hideMarkers();
+            view.showProgressUpdate();
         }
         interactor.execute();
     }
@@ -50,12 +51,12 @@ public class MapPresenterImpl implements MapPresenter {
     public void onEventMainThread(MapEvent mapEvent) {
         int errorNumber = mapEvent.getError();
         if (view != null) {
+            view.hideProgressUpdate();
             if (errorNumber != 0) {
                 view.showError(errorNumber);
             } else {
                 view.showMarkers(mapEvent.getListBikeStation(), mapEvent.getListStateBikeStation());
             }
-
         }
     }
 }

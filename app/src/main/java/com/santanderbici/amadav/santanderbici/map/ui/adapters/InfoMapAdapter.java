@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -47,7 +48,7 @@ public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
         View v = inflater.inflate(R.layout.infomap_adapter, null);
         ButterKnife.bind(this, v);
 
-        int pos=Integer.parseInt(marker.getId().substring(1,marker.getId().length()));    //marker id start in 'm'
+        int pos=Integer.parseInt(marker.getSnippet());
         int totalBikes=Integer.parseInt(listStateBikeStation.get(pos).getFreePlaces()) +
                 Integer.parseInt(listStateBikeStation.get(pos).getFreeBikes());
 
@@ -62,7 +63,12 @@ public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
     public void addMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation> listStateBikeStation,GoogleMap mMap) {
             for (int i = 0; i < listBikeStation.size(); i++) {
                 LatLng latLng = new LatLng(listBikeStation.get(i).getLatitude(), listBikeStation.get(i).getLongitude());
-                mMap.addMarker(new MarkerOptions().position(latLng).title(listBikeStation.get(i).getDirecction()));
+                mMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title(listBikeStation.get(i).getDirecction())
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.bike_zone))
+                        .snippet(String.valueOf(i)));
+
             }
             this.listStateBikeStation=listStateBikeStation;
     }

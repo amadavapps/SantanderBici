@@ -12,4 +12,6 @@ public interface MapView {
     void showMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation>listStateBikeStation);
     void hideMarkers();
     void showError(int error);
+    void showProgressUpdate();
+    void hideProgressUpdate();
 }

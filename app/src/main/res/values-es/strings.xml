@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Opciones</string>
+    <string name="action_creditos">Creditos</string>
+    <string name="share_from">Compartido desde</string>
+    <string name="credits">Créditos</string>
+    <string name="credits_subtitle">Listado de créditos</string>
+    <string name="other_applications">Otras aplicaciones</string>
+    <string name="other_applications_subtitle">Ver otras aplicaciones desarolladas por amadav</string>
+    <string name="rate">Valorar</string>
+    <string name="rate_subtitle">Si te gusto la aplicacion, valorara positivamente en la store</string>
+    <string name="support">Soporte</string>
+    <string name="support_subtitle">Para cualquier duda amadavapps@gmail.com</string>
+    <string name="app_name">Santander Bici</string>
+    <string name="action_donate"></string>
+</resources>

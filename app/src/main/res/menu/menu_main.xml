@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_update"
+        android:title="Update"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_autorenew_white_24dp"
+        />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_settings_white_24dp"
+        android:orderInCategory="2"
+        />
+
+</menu>
