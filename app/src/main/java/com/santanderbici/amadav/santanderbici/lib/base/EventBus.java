@@ -5,6 +5,8 @@ package com.santanderbici.amadav.santanderbici.lib.base;
  */
 public interface EventBus {
     void register(Object suscriber);
+
     void unregister(Object suscriber);
+
     void post(Object event);
 }

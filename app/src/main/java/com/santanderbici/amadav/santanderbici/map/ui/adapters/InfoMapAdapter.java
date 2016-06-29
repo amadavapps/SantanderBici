@@ -32,7 +32,7 @@ public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
     TextView txtDirection;
 
     private LayoutInflater inflater;
-    private ArrayList<StateBikeStation>listStateBikeStation;
+    private ArrayList<StateBikeStation> listStateBikeStation;
 
     public InfoMapAdapter(LayoutInflater inflater) {
         this.inflater = inflater;
@@ -48,8 +48,8 @@ public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
         View v = inflater.inflate(R.layout.infomap_adapter, null);
         ButterKnife.bind(this, v);
 
-        int pos=Integer.parseInt(marker.getSnippet());
-        int totalBikes=Integer.parseInt(listStateBikeStation.get(pos).getFreePlaces()) +
+        int pos = Integer.parseInt(marker.getSnippet());
+        int totalBikes = Integer.parseInt(listStateBikeStation.get(pos).getFreePlaces()) +
                 Integer.parseInt(listStateBikeStation.get(pos).getFreeBikes());
 
         txtDirection.setText(marker.getTitle());
@@ -60,16 +60,16 @@ public class InfoMapAdapter implements GoogleMap.InfoWindowAdapter {
         return v;
     }
 
-    public void addMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation> listStateBikeStation,GoogleMap mMap) {
-            for (int i = 0; i < listBikeStation.size(); i++) {
-                LatLng latLng = new LatLng(listBikeStation.get(i).getLatitude(), listBikeStation.get(i).getLongitude());
-                mMap.addMarker(new MarkerOptions()
-                        .position(latLng)
-                        .title(listBikeStation.get(i).getDirecction())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.bike_zone))
-                        .snippet(String.valueOf(i)));
+    public void addMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation> listStateBikeStation, GoogleMap mMap) {
+        for (int i = 0; i < listBikeStation.size(); i++) {
+            LatLng latLng = new LatLng(listBikeStation.get(i).getLatitude(), listBikeStation.get(i).getLongitude());
+            mMap.addMarker(new MarkerOptions()
+                    .position(latLng)
+                    .title(listBikeStation.get(i).getDirecction())
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.bike_zone))
+                    .snippet(String.valueOf(i)));
 
-            }
-            this.listStateBikeStation=listStateBikeStation;
+        }
+        this.listStateBikeStation = listStateBikeStation;
     }
 }

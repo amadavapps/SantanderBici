@@ -26,9 +26,9 @@ public class MapRepositoryImpl implements MapRepository {
     private EventBus eventBus;
     private RequestQueue requestQueue;
 
-    private final int NO_ERROR=0;
-    private final int ERROR_DATA=1;
-    private final int ERROR_RESPONSE=2;
+    private final int NO_ERROR = 0;
+    private final int ERROR_DATA = 1;
+    private final int ERROR_RESPONSE = 2;
 
 
     public MapRepositoryImpl(EventBus eventBus, RequestQueue requestQueue) {
@@ -43,11 +43,12 @@ public class MapRepositoryImpl implements MapRepository {
 
     public void getBikeStation() {
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, MapRepository.URL_STATIONS, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, URL_STATIONS, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Type listType = new TypeToken<ArrayList<BikeStation>>() {}.getType();
+                        Type listType = new TypeToken<ArrayList<BikeStation>>() {
+                        }.getType();
 
                         try {
                             Gson gson = new Gson();
@@ -71,11 +72,12 @@ public class MapRepositoryImpl implements MapRepository {
 
     public void getStateBikeStation(final ArrayList<BikeStation> listBikeStation) {
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, MapRepository.URL_BIKES, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, URL_BIKES, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Type listType = new TypeToken<ArrayList<StateBikeStation>>() {}.getType();
+                        Type listType = new TypeToken<ArrayList<StateBikeStation>>() {
+                        }.getType();
                         try {
                             Gson gson = new Gson();
                             ArrayList<StateBikeStation> lisStateBikeStation = gson.fromJson(response.getJSONArray("resources").toString(), listType);
@@ -83,8 +85,7 @@ public class MapRepositoryImpl implements MapRepository {
 
                             if (!lisStateBikeStation.isEmpty() || !listBikeStation.isEmpty()) {
                                 post(listBikeStation, lisStateBikeStation);
-                            }
-                            else{
+                            } else {
                                 post(ERROR_DATA);
                             }
                         } catch (JSONException e) {

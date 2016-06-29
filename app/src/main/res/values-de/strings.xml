@@ -4,4 +4,5 @@
     <string name="action_creditos">Kredite</string>
     <string name="support">Unterstützen</string>
     <string name="app_name">Santander Fahrrad</string>
+    <string name="mapmain.response.error"></string>
 </resources>

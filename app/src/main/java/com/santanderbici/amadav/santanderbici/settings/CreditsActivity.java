@@ -13,7 +13,8 @@ import butterknife.ButterKnife;
  * Created by dgf on 28/05/2016.
  */
 public class CreditsActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

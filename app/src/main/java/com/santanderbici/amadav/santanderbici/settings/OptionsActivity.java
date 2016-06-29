@@ -15,7 +15,8 @@ import butterknife.ButterKnife;
 
 
 public class OptionsActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     SettingsFragment settingsFragment;
 
     @Override

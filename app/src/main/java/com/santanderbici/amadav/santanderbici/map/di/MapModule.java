@@ -1,10 +1,8 @@
 package com.santanderbici.amadav.santanderbici.map.di;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 
 import com.android.volley.RequestQueue;
-import com.santanderbici.amadav.santanderbici.lib.GoogleVolley;
 import com.santanderbici.amadav.santanderbici.lib.base.EventBus;
 import com.santanderbici.amadav.santanderbici.map.MapInteractor;
 import com.santanderbici.amadav.santanderbici.map.MapInteractorImpl;
@@ -35,38 +33,38 @@ public class MapModule {
 
     @Provides
     @Singleton
-    InfoMapAdapter providesAdapter(LayoutInflater inflater){
+    InfoMapAdapter providesAdapter(LayoutInflater inflater) {
         return new InfoMapAdapter(inflater);
     }
 
     @Provides
     @Singleton
-    LayoutInflater providesLayoutInflater(){
+    LayoutInflater providesLayoutInflater() {
         return this.inflater;
     }
 
     @Provides
     @Singleton
-    MapPresenter providesMapPresenter(EventBus eventBus, MapView view, MapInteractor interactor){
-        return new MapPresenterImpl(eventBus,view,interactor);
+    MapPresenter providesMapPresenter(EventBus eventBus, MapView view, MapInteractor interactor) {
+        return new MapPresenterImpl(eventBus, view, interactor);
     }
 
     @Provides
     @Singleton
-    MapView providesMapView(){
+    MapView providesMapView() {
         return this.view;
     }
 
     @Provides
     @Singleton
-    MapInteractor providesMapInteractor(MapRepository repository){
+    MapInteractor providesMapInteractor(MapRepository repository) {
         return new MapInteractorImpl(repository);
     }
 
     @Provides
     @Singleton
-    MapRepository providesMapRepository(EventBus eventBus, RequestQueue requestQueue){
-        return new MapRepositoryImpl(eventBus,requestQueue);
+    MapRepository providesMapRepository(EventBus eventBus, RequestQueue requestQueue) {
+        return new MapRepositoryImpl(eventBus, requestQueue);
     }
 
 

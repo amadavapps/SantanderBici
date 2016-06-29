@@ -1,6 +1,5 @@
 package com.santanderbici.amadav.santanderbici.entities;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -51,7 +50,7 @@ public class BikeStation implements Comparable<BikeStation> {
         return longitude;
     }
 
-    public void setLongitude(double longitude){
+    public void setLongitude(double longitude) {
 
     }
 

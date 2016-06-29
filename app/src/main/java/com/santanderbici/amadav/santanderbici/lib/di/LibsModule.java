@@ -3,11 +3,9 @@ package com.santanderbici.amadav.santanderbici.lib.di;
 import android.content.Context;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.santanderbici.amadav.santanderbici.lib.GoogleVolley;
 import com.santanderbici.amadav.santanderbici.lib.GreenRobotEventBus;
 import com.santanderbici.amadav.santanderbici.lib.base.EventBus;
-
 
 import javax.inject.Singleton;
 
@@ -27,25 +25,25 @@ public class LibsModule {
 
     @Provides
     @Singleton
-    EventBus providesEventBus(org.greenrobot.eventbus.EventBus eventbus){
+    EventBus providesEventBus(org.greenrobot.eventbus.EventBus eventbus) {
         return new GreenRobotEventBus(eventbus);
     }
 
     @Provides
     @Singleton
-    org.greenrobot.eventbus.EventBus providesLibraryEventBus(){
+    org.greenrobot.eventbus.EventBus providesLibraryEventBus() {
         return org.greenrobot.eventbus.EventBus.getDefault();
     }
 
     @Provides
     @Singleton
-    RequestQueue providesRequestQueue(GoogleVolley volley){
+    RequestQueue providesRequestQueue(GoogleVolley volley) {
         return volley.getRequestQueue();
     }
 
     @Provides
     @Singleton
-    GoogleVolley providesGoogleVolley(){
+    GoogleVolley providesGoogleVolley() {
         return GoogleVolley.getInstance(context);
     }
 }

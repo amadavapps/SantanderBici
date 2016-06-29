@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.santanderbici.amadav.santanderbici.R;
@@ -21,50 +20,53 @@ import butterknife.Unbinder;
  * Created by dgago on 06/06/2016.
  */
 public class SettingsFragment extends Fragment {
-    @BindView(R.id.relaSupport) RelativeLayout relaSupport;
-    @BindView(R.id.relaRate) RelativeLayout relaRate;
-    @BindView(R.id.relaApps) RelativeLayout relaApps;
-    @BindView(R.id.relaCredits) RelativeLayout relaCredits;
+    @BindView(R.id.relaSupport)
+    RelativeLayout relaSupport;
+    @BindView(R.id.relaRate)
+    RelativeLayout relaRate;
+    @BindView(R.id.relaApps)
+    RelativeLayout relaApps;
+    @BindView(R.id.relaCredits)
+    RelativeLayout relaCredits;
 
     private Unbinder unbinder;
 
-    private final String EMAIL="amadavapps@gmail.com";
-    private final String PACKAGENAME= "com.amadav.deathroll.pan";
-    private final String PACKAGENAME_DONATE= "com.amadav.deathroll.pandonate";
-    private final String DEVELOPER= "Amadav";
-    private final String MARKET_ID= "market://details?id=";
-    private final String WEB_ID= "https://play.google.com/store/apps/details?id=";
-    private final String MARKET_PUB="market://search?q=pub:";
-    private final String WEB_PUB="http://play.google.com/store/search?q=pub:";
+    private final String EMAIL = "amadavapps@gmail.com";
+    private final String PACKAGENAME = "com.amadav.deathroll.pan";
+    private final String DEVELOPER = "Amadav";
+    private final String MARKET_ID = "market://details?id=";
+    private final String WEB_ID = "https://play.google.com/store/apps/details?id=";
+    private final String MARKET_PUB = "market://search?q=pub:";
+    private final String WEB_PUB = "http://play.google.com/store/search?q=pub:";
 
     public SettingsFragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
-    @OnClick({R.id.relaSupport, R.id.relaApps,R.id.relaRate,R.id.relaCredits})
+    @OnClick({R.id.relaSupport, R.id.relaApps, R.id.relaRate, R.id.relaCredits})
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
 
             case R.id.relaSupport:
                 launchEmail();
                 break;
 
             case R.id.relaRate:
-                launchPlayStore(MARKET_ID+PACKAGENAME,WEB_ID+PACKAGENAME);
+                launchPlayStore(MARKET_ID + PACKAGENAME, WEB_ID + PACKAGENAME);
                 break;
 
             case R.id.relaApps:
-                launchPlayStore(MARKET_PUB+DEVELOPER,WEB_PUB+DEVELOPER);
+                launchPlayStore(MARKET_PUB + DEVELOPER, WEB_PUB + DEVELOPER);
                 break;
 
             case R.id.relaCredits:
-                startActivity(new Intent(getActivity(),CreditsActivity.class));
+                startActivity(new Intent(getActivity(), CreditsActivity.class));
                 break;
 
         }
@@ -80,7 +82,7 @@ public class SettingsFragment extends Fragment {
         }
     }
 
-    public void launchPlayStore(String marketLink,String webLink){
+    public void launchPlayStore(String marketLink, String webLink) {
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(marketLink));

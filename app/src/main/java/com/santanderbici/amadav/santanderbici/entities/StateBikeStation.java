@@ -1,12 +1,11 @@
 package com.santanderbici.amadav.santanderbici.entities;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by dgago on 14/06/2016.
  */
-public class StateBikeStation implements Comparable<StateBikeStation>{
+public class StateBikeStation implements Comparable<StateBikeStation> {
     @SerializedName("ayto:bicicletas_libres")
     private String freeBikes;
     @SerializedName("ayto:puestos_libres")

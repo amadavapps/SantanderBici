@@ -1,29 +1,26 @@
 package com.santanderbici.amadav.santanderbici.map.ui;
 
-import android.animation.ObjectAnimator;
-import android.content.ClipData;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.santanderbici.amadav.santanderbici.map.MapApplication;
 import com.santanderbici.amadav.santanderbici.R;
 import com.santanderbici.amadav.santanderbici.entities.BikeStation;
 import com.santanderbici.amadav.santanderbici.entities.StateBikeStation;
+import com.santanderbici.amadav.santanderbici.map.MapApplication;
 import com.santanderbici.amadav.santanderbici.map.MapPresenter;
 import com.santanderbici.amadav.santanderbici.map.di.MapComponent;
 import com.santanderbici.amadav.santanderbici.map.ui.adapters.InfoMapAdapter;
@@ -57,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(toolbar);
         setupMap();
         setupInjection();
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     private void setupInjection() {
@@ -119,14 +119,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void showProgressUpdate() {
-        if(refreshItem!=null) {
+        if (refreshItem != null) {
             refreshItem.setActionView(R.layout.toolbar_progress);
         }
     }
 
     @Override
     public void hideProgressUpdate() {
-        if(refreshItem!=null) {
+        if (refreshItem != null) {
             refreshItem.setActionView(null);
         }
     }
@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         refreshItem = menu.findItem(R.id.action_update);
+        showProgressUpdate();
         return true;
     }
 

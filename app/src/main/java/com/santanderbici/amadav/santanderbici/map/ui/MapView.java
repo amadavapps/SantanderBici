@@ -9,9 +9,13 @@ import java.util.ArrayList;
  * Created by Deathroll on 16/06/2016.
  */
 public interface MapView {
-    void showMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation>listStateBikeStation);
+    void showMarkers(ArrayList<BikeStation> listBikeStation, ArrayList<StateBikeStation> listStateBikeStation);
+
     void hideMarkers();
+
     void showError(int error);
+
     void showProgressUpdate();
+
     void hideProgressUpdate();
 }

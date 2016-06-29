@@ -7,8 +7,12 @@ import com.santanderbici.amadav.santanderbici.map.events.MapEvent;
  */
 public interface MapPresenter {
     void onResume();
+
     void onPause();
+
     void onDestroy();
+
     void getBikeStations();
+
     void onEventMainThread(MapEvent mapEvent);
 }
