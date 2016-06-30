@@ -13,7 +13,7 @@ public interface MapView {
 
     void hideMarkers();
 
-    void showError(int error);
+    void showError(String error);
 
     void showProgressUpdate();
 

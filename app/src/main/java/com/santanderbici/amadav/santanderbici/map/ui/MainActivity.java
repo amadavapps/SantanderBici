@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -36,6 +35,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, MapView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.adView)
+    AdView mAdView;
+
     @Inject
     InfoMapAdapter adapter;
     @Inject
@@ -54,7 +56,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(toolbar);
         setupMap();
         setupInjection();
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+        setupAdMob();
+    }
+
+    private void setupAdMob(){
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
@@ -108,13 +113,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
-    public void showError(int error) {
-        if (error == 1) {
-            Toast.makeText(this, getString(R.string.mapmain_data_error), Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, getString(R.string.mapmain_response_error), Toast.LENGTH_LONG).show();
-        }
-
+    public void showError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         refreshItem = menu.findItem(R.id.action_update);
-        showProgressUpdate();
         return true;
     }
 

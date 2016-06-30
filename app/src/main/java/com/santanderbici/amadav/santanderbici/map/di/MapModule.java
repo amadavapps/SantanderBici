@@ -1,5 +1,6 @@
 package com.santanderbici.amadav.santanderbici.map.di;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 
 import com.android.volley.RequestQueue;
@@ -25,10 +26,12 @@ import dagger.Provides;
 public class MapModule {
     private MapView view;
     private LayoutInflater inflater;
+    private Context context;
 
-    public MapModule(MapView view, LayoutInflater inflater) {
+    public MapModule(MapView view, LayoutInflater inflater,Context context) {
         this.view = view;
         this.inflater = inflater;
+        this.context=context;
     }
 
     @Provides
@@ -41,6 +44,12 @@ public class MapModule {
     @Singleton
     LayoutInflater providesLayoutInflater() {
         return this.inflater;
+    }
+
+    @Provides
+    @Singleton
+    Context providesContext() {
+        return this.context;
     }
 
     @Provides
@@ -63,8 +72,8 @@ public class MapModule {
 
     @Provides
     @Singleton
-    MapRepository providesMapRepository(EventBus eventBus, RequestQueue requestQueue) {
-        return new MapRepositoryImpl(eventBus, requestQueue);
+    MapRepository providesMapRepository(EventBus eventBus, RequestQueue requestQueue,Context context) {
+        return new MapRepositoryImpl(eventBus, requestQueue,context);
     }
 
 

@@ -49,11 +49,11 @@ public class MapPresenterImpl implements MapPresenter {
     @Override
     @Subscribe
     public void onEventMainThread(MapEvent mapEvent) {
-        int errorNumber = mapEvent.getError();
+        String error= mapEvent.getError();
         if (view != null) {
             view.hideProgressUpdate();
-            if (errorNumber != 0) {
-                view.showError(errorNumber);
+            if (error != null) {
+                view.showError(error);
             } else {
                 view.showMarkers(mapEvent.getListBikeStation(), mapEvent.getListStateBikeStation());
             }

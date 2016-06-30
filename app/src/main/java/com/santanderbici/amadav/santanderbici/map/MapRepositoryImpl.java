@@ -1,5 +1,7 @@
 package com.santanderbici.amadav.santanderbici.map;
 
+import android.content.Context;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -7,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.santanderbici.amadav.santanderbici.R;
 import com.santanderbici.amadav.santanderbici.entities.BikeStation;
 import com.santanderbici.amadav.santanderbici.entities.StateBikeStation;
 import com.santanderbici.amadav.santanderbici.lib.base.EventBus;
@@ -25,15 +28,18 @@ import java.util.Collections;
 public class MapRepositoryImpl implements MapRepository {
     private EventBus eventBus;
     private RequestQueue requestQueue;
+    private Context context;
 
-    private final int NO_ERROR = 0;
-    private final int ERROR_DATA = 1;
-    private final int ERROR_RESPONSE = 2;
+    private final String ERROR_DATA;
+    private final String ERROR_RESPONSE;
 
 
-    public MapRepositoryImpl(EventBus eventBus, RequestQueue requestQueue) {
+    public MapRepositoryImpl(EventBus eventBus, RequestQueue requestQueue,Context context) {
         this.eventBus = eventBus;
         this.requestQueue = requestQueue;
+        this.context=context;
+        ERROR_DATA = this.context.getString(R.string.mapmain_data_error);
+        ERROR_RESPONSE = this.context.getString(R.string.mapmain_response_error);
     }
 
     @Override
@@ -104,14 +110,14 @@ public class MapRepositoryImpl implements MapRepository {
     }
 
     private void post(ArrayList<BikeStation> bikeStations, ArrayList<StateBikeStation> stateBikeStations) {
-        post(bikeStations, stateBikeStations, NO_ERROR);
+        post(bikeStations, stateBikeStations, null);
     }
 
-    private void post(int error) {
+    private void post(String error) {
         post(null, null, error);
     }
 
-    private void post(ArrayList<BikeStation> bikeStations, ArrayList<StateBikeStation> stateBikeStations, int error) {
+    private void post(ArrayList<BikeStation> bikeStations, ArrayList<StateBikeStation> stateBikeStations, String error) {
         MapEvent event = new MapEvent();
         event.setError(error);
         event.setListBikeStation(bikeStations);

@@ -9,15 +9,15 @@ import java.util.ArrayList;
  * Created by Deathroll on 16/06/2016.
  */
 public class MapEvent {
-    private int error;
+    private String error;
     private ArrayList<BikeStation> listBikeStation;
     private ArrayList<StateBikeStation> listStateBikeStation;
 
-    public int getError() {
+    public String getError() {
         return error;
     }
 
-    public void setError(int error) {
+    public void setError(String error) {
         this.error = error;
     }
 

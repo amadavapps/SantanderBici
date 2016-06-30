@@ -19,7 +19,7 @@ public class MapApplication extends Application {
     public MapComponent getMapsComponent(MapView view, LayoutInflater inflater, Context context) {
         return DaggerMapComponent.builder()
                 .libsModule(new LibsModule(context))
-                .mapModule(new MapModule(view, inflater))
+                .mapModule(new MapModule(view, inflater,context))
                 .build();
     }
 
