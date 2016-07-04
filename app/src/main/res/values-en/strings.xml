@@ -11,7 +11,6 @@
     <string name="rate_subtitle">If you liked the application, valued positively in the store</string>
     <string name="action_settings">Settings</string>
     <string name="app_name">Santander Bike</string>
-    <string name="action_donate"></string>
     <string name="mapmain.response.error">Connection error with the server</string>
     <string name="mapmain.data.error">Data received incorrect</string>
     <string name="adapter.title.freebikes">Free bikes:</string>

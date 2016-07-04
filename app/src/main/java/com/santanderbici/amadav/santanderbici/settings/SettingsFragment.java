@@ -32,7 +32,7 @@ public class SettingsFragment extends Fragment {
     private Unbinder unbinder;
 
     private final String EMAIL = "amadavapps@gmail.com";
-    private final String PACKAGENAME = "com.amadav.deathroll.pan";
+    private final String PACKAGENAME = "com.santanderbici.amadav.santanderbici";
     private final String DEVELOPER = "Amadav";
     private final String MARKET_ID = "market://details?id=";
     private final String WEB_ID = "https://play.google.com/store/apps/details?id=";
@@ -68,7 +68,6 @@ public class SettingsFragment extends Fragment {
             case R.id.relaCredits:
                 startActivity(new Intent(getActivity(), CreditsActivity.class));
                 break;
-
         }
     }
 

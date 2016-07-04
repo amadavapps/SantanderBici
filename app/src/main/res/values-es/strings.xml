@@ -11,7 +11,6 @@
     <string name="support">Soporte</string>
     <string name="support_subtitle">Para cualquier duda amadavapps@gmail.com</string>
     <string name="app_name">Santander Bici</string>
-    <string name="action_donate"></string>
     <string name="mapmain.data.error">Datos recibidos incorrectos</string>
     <string name="mapmain.response.error">Fallo de conexion con el servidor</string>
     <string name="adapter.title.freebikes">Bicis libres:</string>
